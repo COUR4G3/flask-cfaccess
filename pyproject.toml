@@ -18,6 +18,8 @@ dynamic = ["version"]
 requires-python = ">= 3.8"
 dependencies = [
     "flask ~= 2.2.3",
+    "pyjwt ~= 2.6.0",
+    "requests ~= 2.28.2",
 ]
 
 [project.urls]
