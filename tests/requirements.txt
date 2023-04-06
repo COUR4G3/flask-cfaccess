@@ -1,0 +1,6 @@
+pytest-cov~=4.0.0
+pytest-flask~=1.2.0
+pytest-mock~=3.10.0
+pytest-skip-slow~=0.0.3
+pytest~=7.2.0
+responses~=0.23.1

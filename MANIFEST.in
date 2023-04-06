@@ -1,0 +1,7 @@
+include CHANGES.md
+include _version.py
+graft docs
+prune docs/_build
+graft tests
+include py.typed
+global-exclude *.pyc

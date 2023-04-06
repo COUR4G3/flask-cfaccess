@@ -1,0 +1,117 @@
+[project]
+name = "flask-cfaccess"
+description = "Zero Trust Access with Cloudflare Access for Flask applications."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{name = "Michael de Villiers", email = "michael@devilears.co.za"},]
+maintainers = [{name = "Michael de Villiers", email = "michael@devilears.co.za"},]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+dynamic = ["version"]
+requires-python = ">= 3.8"
+dependencies = [
+    "flask ~= 2.2.3",
+]
+
+[project.urls]
+Documentation = "https://flask-cfaccess.readthedocs.io/"
+Changes = "https://flask-cfaccess.readthedocs.io/changes/"
+"Source Code" = "https://github.com/COUR4G3/flask-cfaccess/"
+"Issue Tracker" = "https://github.com/COUR4G3/hacksaw/flask-cfaccess/"
+
+[project.optional-dependencies]
+dev = [
+    "bandit",
+    "black",
+    "flake8",
+    "isort",
+    "pre_commit ~= 2.21.0",
+    "pydocstyle",
+]
+docs = [
+    "m2r2 ~= 0.3.3",
+    "setuptools_scm ~= 7.1.0",
+    "sphinx ~= 6.1.3",
+    "sphinx_issues ~= 3.0.1",
+    "sphinx-prompt ~= 1.6.0",
+
+]
+flask-login = [
+    "flask-login ~= 0.6.2", 
+]
+test = [
+    "pytest ~= 7.2.0",
+    "pytest-cov ~= 4.0.0",
+    "pytest-mock ~= 3.10.0",
+    "pytest-skip-slow == 0.0.3",
+    "responses ~= 0.23.1",
+]
+
+[build-system]
+requires = ["setuptools >= 64.0", "setuptools_scm[toml] >= 6.2", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+force-exclude = '''
+(
+  /venv/
+)
+'''
+line-length = 79
+target-version = ['py38']
+
+[tool.coverage.run]
+source = ["flask_cfaccess"]
+
+[tool.coverage.report]
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    "pragma: nocover",
+
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if app\\.debug",
+    "if current_app\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if False:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+]
+omit = [
+    "*/__main__.py",
+    "*/_version.py",
+]
+
+[tool.isort]
+profile = 'black'
+lines_between_types = 1
+combine_as_imports = true
+known_first_party = ['flask_cfaccess', 'tests']
+
+[tool.pytest.ini_options]
+addopts = "--cov=flask_cfaccess --cov-report html --cov-report term-missing"
+markers = [
+    "slow: tests that are slow",
+    "integration: integration tests that require external tools",
+]
+
+[tool.setuptools]
+py-modules = ["flask_cfaccess"]
+
+[tool.setuptools_scm]
+write_to = "_version.py"
