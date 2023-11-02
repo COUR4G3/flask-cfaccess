@@ -1,3 +1,4 @@
 flask~=2.2.3
 pyjwt~=2.6.0
 requests~=2.28.2
+werkzeug>=3.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
